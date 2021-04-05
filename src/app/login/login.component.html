@@ -1,0 +1,45 @@
+<div class="background">
+
+  <div class="texto">
+    <img src="file:D:\Repositorios\Projeto Automações\robosAutomacoes\src\assets\img\stefaniniGroup.png">
+    <p class="titulo-app" id="textoTelaInicial">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio quibusdam beatae placeat officiis quo nam sequi a, quod eius quisquam eum ad sunt repellat minima autem corporis saepe veniam. Cum.</p>
+  </div>
+
+  <div class="container">
+    <form [formGroup]="registerForm">
+      <div class="container-menu">
+        <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-12">
+            <h4>Login</h4>
+            <label for="login">Usuário</label><br>
+            <input id="login" type="text" class="form-control" formControlName="username" placeholder="Usuário" [ngClass]="{'is-invalid' : registerForm.controls['username'].errors && registerForm.controls['username'].touched}">
+              <div *ngIf="registerForm.controls['username'].hasError('required') && registerForm.controls['username'].touched" class="invalid-feedback">
+                Usuário Obrigatório
+              </div>
+              <div *ngIf="registerForm.controls['username'].hasError('minlength') && registerForm.controls['username'].touched" class="invalid-feedback">
+                Mínimo 4 caracteres
+              </div>
+              <div *ngIf="registerForm.controls['username'].hasError('maxlength') && registerForm.controls['username'].touched" class="invalid-feedback">
+                Máximo 20 caracteres
+              </div>
+          </div>
+          <br>
+          <div class="ui-g-12 ui-md-12">
+            <label for="senha">Senha</label><br>
+            <input id="senha" class="form-control" type="password" formControlName="password" placeholder="Senha" [ngClass]="{'is-invalid' : registerForm.controls['password'].errors && registerForm.controls['password'].touched}">
+            <div *ngIf="registerForm.controls['password'].hasError('required') && registerForm.controls['password'].touched" class="invalid-feedback">
+              Senha Obrigatória
+            </div>
+          </div>
+        </div>
+        <p class="texto2">Copyright © <strong> <u tooltip="Automações DP" data-placement="bottom">Automações DP</u>
+        </strong> Todos os direitos reservados.
+      </p>
+      <br>
+      <div style="text-align: center;">
+        <button class="btn btn-primary" type="submit" [disabled]="!registerForm.valid" (click)="fazerLogin()">Entrar</button>
+      </div>
+      </div>
+    </form>
+  </div>
+</div>
